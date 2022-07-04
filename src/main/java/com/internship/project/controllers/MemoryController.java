@@ -36,13 +36,11 @@ public class MemoryController {
                 ? leftSideOfExpression.replace("M", String.valueOf(memory.getValue()))
                 : leftSideOfExpression;
         String resultOfLeftSide = calculator.apply(leftSideOfExpression);
-        if (rightSideOfExpression.contains("?")) {
-            return ResponseEntity.ok(leftSideOfExpression + " = " + resultOfLeftSide);
-        } else {
+        if (!rightSideOfExpression.contains("?")) {
             updateMemory(resultOfLeftSide, rightSideOfExpression, memory);
             memoryRepo.save(memory);
-            return ResponseEntity.ok(leftSideOfExpression + " = " + memory.getValue());
         }
+        return ResponseEntity.ok(leftSideOfExpression + " = " + resultOfLeftSide);
     }
 
     private void updateMemory(String resultOfLeftSide, String rightSideOfExpression, Memory memory) {
