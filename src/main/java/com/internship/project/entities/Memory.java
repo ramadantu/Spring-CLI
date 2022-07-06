@@ -8,7 +8,7 @@ public class Memory {
     @Id
     private Long id;
 
-    @Column(name = "Memory")
+    @Column(name = "memory")
     private Double value;
 
     public Long getId() {
