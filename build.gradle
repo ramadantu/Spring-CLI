@@ -24,3 +24,8 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+bootBuildImage {
+    imageName = "library/project:0.0.1-SNAPSHOT"
+    environment = ["BPL_SPRING_CLOUD_BINDINGS_ENABLED" : "false"]
+}
